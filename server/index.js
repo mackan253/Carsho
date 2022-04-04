@@ -34,6 +34,13 @@ app.get("/api/get/carmodels", (req, res) => {
     });
 });
 
+app.get("/api/get/sales", (req, res) => {
+    const sqlSelect = "SELECT * FROM sales"
+    db.query(sqlSelect, (err, result) => {
+        res.send(result);
+    });
+});
+
 /*app.post("/api/insert", (req, res)=> {
     const carModel = req.body.carModel
 
