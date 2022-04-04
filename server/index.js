@@ -34,7 +34,7 @@ app.get("/api/get/carmodels", (req, res) => {
     });
 });
 
-app.post("/api/insert", (req, res)=> {
+/*app.post("/api/insert", (req, res)=> {
     const carModel = req.body.carModel
 
    const sqlInsert = 
@@ -42,8 +42,8 @@ app.post("/api/insert", (req, res)=> {
     db.query(sqlInsert, carModel, (err, result) => {
         console.log(err);
     });
-});
+});*/
 
 app.listen(3001, () => {
-    console.log("running on port 301")
+    console.log("running on port 3001")
 });
