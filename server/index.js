@@ -34,8 +34,12 @@ app.get("/api/get/carmodels", (req, res) => {
     });
 });
 
-app.get("/api/get/sales", (req, res) => {
-    const sqlSelect = "SELECT * FROM sales"
+app.get("/api/get/totalsales", (req, res) => {
+    const sqlSelect = "SELECT e.*, SUM(c.price) AS total_sales " +
+    "FROM employees e, sales s, carmodels c " +
+    "WHERE s.employee_id = e.id " +
+    "AND s.carmodel_id = c.id " +
+    "GROUP BY e.name"
     db.query(sqlSelect, (err, result) => {
         res.send(result);
     });
