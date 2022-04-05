@@ -6,6 +6,7 @@ body{
   background-color: #04AA6D;
 }
 
+
 /* Dropdown Button */
 .dropbtn {
   background-color: #03c47d;
@@ -50,7 +51,7 @@ body{
 .dropdown:hover .dropbtn {background-color: #3e8e41;}
 
 /* Insert related css */
-#post {
+.form {
   background-color: #04AA6D;
   color: #4CAF50;
   padding: 16px;
