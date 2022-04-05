@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import Axios from 'axios'
+import $ from 'jquery'
 
 function App() {
 
-
-  const [brand, setBrand] = useState("")
-  const [model, setModel] = useState("")
-  const [price, setPrice] = useState("")
   const [carModelList, setCarModelList] = useState([])
   const [employeeList, setEmployeeList] = useState([])
   const [salesList, setSalesList] = useState([])
+  /*var brand = document.getElementById("brand").value
+  var model = document.getElementById("model").value
+  var price = document.getElementById("price").value*/
+
 
   useEffect(() => {
     Axios.get("http://localhost:3001/api/get/carmodels").then((response) => {
@@ -30,39 +31,18 @@ function App() {
     })
   }, [])
 
-  const addCar = () => {
-    Axios.post('http://localhost:3001/api/post', {
-      brand: brand,
-      model: model,
-      price: price
-    });
-
-    setCarModelList([ //automatic refresh
-      ...carModelList,
-      { brand: brand, model: model, price: price},
-    ]);
-  };
-
-
-
 
   return (
     <div className="App">
-      <div id="post">
-        
-          <input class="field" type="text" name="Brand" placeholder="Brand" onChange={(e)=> 
-          setBrand(e.target.value)
-      } />
-          <input type="text" class="field" name="Model" placeholder="Model" onChange={(e)=> 
-          setModel(e.target.value)
-      } />
-          <input type="text" class="field" name="Price" placeholder="Price" onChange={(e)=> 
-          setPrice(e.target.value)
-      } />
-          <button class='button' onClick={addCar}> Submit</button>
-        
 
-      </div>
+
+      <form action='http://localhost:3001/api/post' method="POST" onsubmit="return false">
+        <input type="text" id="brand" name="brand" placeholder="Brand" required />
+        <input type="text"  id="model" name="model" placeholder="Model" required />
+        <input type="text" id="price" name="price" placeholder="Price" required/>
+        <button type="submit" class='button'>Submit</button> 
+      </form>
+
 
       <div class="dropdown">
         <button class="dropbtn">Cars</button>
@@ -90,7 +70,6 @@ function App() {
           })}</>
         </div>
       </div>
-
     </div>
   );
 }
