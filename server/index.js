@@ -45,15 +45,17 @@ app.get("/api/get/totalsales", (req, res) => {
     });
 });
 
-/*app.post("/api/insert", (req, res)=> {
-    const carModel = req.body.carModel
+app.post("/api/post", (req, res)=> {
+    const brand = req.body.brand
+    const model = req.body.model
+    const price = req.body.price
 
    const sqlInsert = 
-   "INSERT INTO movie_reviews (carmodels) VALUES (?)"
-    db.query(sqlInsert, carModel, (err, result) => {
+   "INSERT INTO carmodels (Brand, Model, Price) VALUES (?, ?, ?)"
+    db.query(sqlInsert, [brand, model, price], (err, result) => {
         console.log(err);
     });
-});*/
+});
 
 app.listen(3001, () => {
     console.log("running on port 3001")
