@@ -1,18 +1,33 @@
-import React from 'react'
+import React, { useState } from 'react'
+import Axios from 'axios'
+
 
 function Submit() {
 
-    function refreshPage() {
-        window.location.reload ()
-      }
+    const [brand, setBrand] = useState("")
+    const [model, setModel] = useState("")
+    const [price, setPrice] = useState("")
+
+    const post = () => {
+     Axios.post('http://localhost:3001/api/post', {
+        brand: brand,
+        mode: model,
+        price: price
+      
+    })
+    window.location.reload(); //doesn't work
+    this.setBrand("")
+    this.setModel("")
+    this.setPrice("")
+}
 
     return (
         <>
             <form action='http://localhost:3001/api/post' method="POST">
-                <input type="input" class="text" name="brand" placeholder="Brand" required />
-                <input type="input" class="text" placeholder="Model" required />
-                <input type="input" class="text" name="price" placeholder="Price" required />
-                <button type="submit" id='btn' class='button' onClick={refreshPage}>Submit</button>
+                <input type="input" class="text" name="brand" value={brand} onChange={(e) => setBrand(e.target.value)} placeholder="Brand" required />
+                <input type="input" class="text" value={model} onChange={(e) => setModel(e.target.value)} placeholder="Model" required />
+                <input type="input" class="text" name="price" value={price} onChange={(e) => setPrice(e.target.value)} placeholder="Price" required />
+                <button type="submit" id='btn' class='button' >Submit</button>
             </form>
         </>
     )

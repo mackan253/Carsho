@@ -22,11 +22,11 @@ class App extends Component {
           <DropDown />
           <Login />
         </header>
-        <body>
+        <div>
           <Submit />
           <Table />
 
-        </body>
+        </div>
 
       </div>
 
