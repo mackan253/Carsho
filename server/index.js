@@ -45,6 +45,19 @@ app.get("/api/get/totalsales", (req, res) => {
     });
 });
 
+
+app.delete('/api/delete/:id', (req, res) =>{
+    const id = req.params.id;
+    const sqlDelete = 
+    "DELETE FROM carmodels WHERE id = ?"
+
+    db.query(sqlDelete, id, (err, result) => {
+      if(err) 
+       console.log(err)
+    })
+})
+
+
 app.post("/api/post", (req, res)=> {
     const brand = req.body.brand
     const model = req.body.model
@@ -56,6 +69,7 @@ app.post("/api/post", (req, res)=> {
         console.log(err);
     });
 });
+
 
 app.listen(3001, () => {
     console.log("running on port 3001")
