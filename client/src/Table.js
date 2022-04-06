@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from 'react';
 import Axios from 'axios'
-import './App.css';
+
 
 
 
@@ -19,7 +19,6 @@ function Table() {
       const DeleteCar = (val) => { //assigning val the id of the object
         const next = [...carModelList];
         const removedItems = next.splice(next.indexOf(val), 1);
-        
        const deleteCarModel = Axios.delete(`http://localhost:3001/api/delete/${val.id}`); //sending it to backend
 
        setCarModelList(next);
@@ -37,7 +36,7 @@ function Table() {
                 <td>{val.model}</td>
                 <td>{val.price}</td>
                 <td>
-                    <button onClick={() => DeleteCar(val)}>Delete</button> 
+                    <button id="delete" onClick={() => DeleteCar(val)}>Delete</button> 
                 </td>
             </tr>))
       }
